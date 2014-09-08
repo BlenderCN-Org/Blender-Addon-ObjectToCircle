@@ -5,7 +5,7 @@ from mathutils import Vector
 
 
 bl_info = {
-    "name": "Spirals",
+    "name": "Circles",
     "author": "Juha Wiiala (TynkaTopi), Oren Titane (Genome36)",
     "version": (0, 1, 0),
     "blender": (2, 72, 0),
