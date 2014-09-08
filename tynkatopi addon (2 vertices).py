@@ -6,7 +6,7 @@ from mathutils import Vector
 
 bl_info = {
     "name": "Spirals",
-    "author": "unknown (TynkaTopi), Oren Titane (Genome36)",
+    "author": "Juha Wiiala (TynkaTopi), Oren Titane (Genome36)",
     "version": (0, 1, 0),
     "blender": (2, 72, 0),
     "location": "Object",
@@ -73,7 +73,7 @@ def print_vert_details(selected_verts, object_reference, corners):
         bpy.context.scene.update()
 
         plane = bpy.context.scene.objects.active
-        #print ("plane=",plane)
+        print ("plane=",plane)
 
         bpy.ops.object.select_all(action='DESELECT')
 
@@ -84,7 +84,7 @@ def print_vert_details(selected_verts, object_reference, corners):
         bpy.ops.transform.rotate(value= radians(360/corners), axis=(0, 0, 1), constraint_axis=(False, False, True), constraint_orientation='GLOBAL', mirror=False, proportional='DISABLED', proportional_edit_falloff='SMOOTH', proportional_size=1)
         #parent
         plane.select = True
-        bpy.ops.object.parent_set(type='OBJECT', keep_transform=True)
+        #bpy.ops.object.parent_set(type='OBJECT', keep_transform=True)
 
         bpy.ops.object.select_all(action='DESELECT')
         bpy.context.scene.objects.active = plane
@@ -102,7 +102,11 @@ def print_vert_details(selected_verts, object_reference, corners):
         bpy.context.scene.objects.active = plane
         plane.select = True
 
+
+
         bpy.ops.object.mode_set(mode = 'EDIT')
+        #bpy.context.space_data.pivot_point = 'CURSOR'
+        
         #bpy.context.scene.update()
 
     else:
@@ -116,7 +120,7 @@ class Create(bpy.types.Operator):
         def get_vertex_data(object_reference):
             bm = bmesh.from_edit_mesh(object_reference.data)
             selected_verts = [vert for vert in bm.verts if vert.select]
-            print_vert_details(selected_verts, object_reference, context.scene.prop)
+            print_vert_details(selected_verts, object_reference, context.scene.prop.corners)
 
         bpy.ops.object.mode_set(mode = 'OBJECT')
         bpy.ops.object.mode_set(mode = 'EDIT')
@@ -151,7 +155,7 @@ class Properties(bpy.types.PropertyGroup):
     corners = bpy.props.IntProperty(
             name = "Corners",
             description = "Number of object in array",
-            min = 0,
+            min = 2,
             step = 1
            )
 
@@ -172,3 +176,4 @@ if __name__ == "__main__":
     except:
         pass
     register()
+
