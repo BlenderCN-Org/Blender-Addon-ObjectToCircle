@@ -3,7 +3,6 @@ import bmesh
 from math import pi,sin,sqrt,radians,degrees
 from mathutils import Vector
 
-
 bl_info = {
     "name": "Circles",
     "author": "Juha Wiiala (TynkaTopi), Oren Titane (Genome36)",
@@ -18,8 +17,8 @@ bl_info = {
 
 def print_vert_details(selected_verts, object_reference, corners):
     num_verts = len(selected_verts)
-    print("number of verts: {}".format(num_verts))
-    print("vert indices: {}".format([id.index for id in selected_verts]))
+    #print("number of verts: {}".format(num_verts))
+    #print("vert indices: {}".format([id.index for id in selected_verts]))
 
     if num_verts == 2:
 
@@ -37,7 +36,7 @@ def print_vert_details(selected_verts, object_reference, corners):
             #print(object_reference.data.vertices[id.index].co)
             c+= 1
 
-        print ("c=",c)
+        #print ("c=",c)
         diffx = coord[0][0] - coord[1][0]
         diffy = coord[0][1] - coord[1][1]
         #print ("diffx=",abs(diffx))
