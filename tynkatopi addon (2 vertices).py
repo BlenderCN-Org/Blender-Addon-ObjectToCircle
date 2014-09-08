@@ -10,7 +10,7 @@ bl_info = {
     "version": (0, 1, 0),
     "blender": (2, 72, 0),
     "location": "Object",
-    "description": "Create spirals and circles using a selected object and an array modifier",
+    "description": "Create circles using a selected object and an array modifier",
     "warning": "beta",
     "wiki_url": "",
     "category": "",
