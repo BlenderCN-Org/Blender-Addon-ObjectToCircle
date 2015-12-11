@@ -7,7 +7,7 @@ bl_info = {
 	"name": "Circles",
 	"author": "Juha Wiiala (TynkaTopi), Oren Titane (Genome36)",
 	"version": (0, 2, 0),
-	"blender": (2, 72, 0),
+	"blender": (2, 76, 0),
 	"location": "Object",
 	"description": "Create circles using a selected object and an array modifier",
 	"warning": "beta",
