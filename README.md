@@ -1,11 +1,8 @@
 ObjectToCircle
 ==============
 
-1) Select 2 vertices of your mesh object.
-
+1) Select 2 vertices/points of your mesh/curve object.
 2) Go object properties panel
-
-3) Set number of objects to duplicate
-
-4) Press Circle button
+3) Press Circle button
+4) Set number of objects to duplicate
 
