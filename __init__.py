@@ -28,14 +28,12 @@ class Create(bpy.types.Operator):
 		min = 2,
 		step = 1
 		)
-	activeobject = bpy.props.StringProperty()
-	
+		
 	def print_vert_details(self, context):
 	
-		#o = bpy.context.scene.objects.active
+		o = context.object
 		bpy.ops.object.mode_set(mode = 'OBJECT')
 		bpy.ops.object.select_all(action='DESELECT')
-		o = bpy.data.objects[self.active_obj_name]
 		
 		if o.type == 'MESH':
 			#mesh vertices coord
@@ -61,11 +59,9 @@ class Create(bpy.types.Operator):
 			diffx = vco[0][0] - vco[1][0]
 			diffy = vco[0][1] - vco[1][1]
 			middlex = (vco[0][0] + vco[1][0]) / 2 
-			#print ("middlex=", middlex)
-			#corners = 12
-			corners = self.corners
-			#print ("corners:",corners)
 			
+			corners = self.corners
+						
 			distcorner = abs(diffx / sin(pi/corners)/2)
 			distmiddle = sqrt(distcorner**2 - ((diffx/2)**2))
 			
@@ -100,7 +96,6 @@ class Create(bpy.types.Operator):
 			
 			bpy.ops.transform.rotate(value= rotation, axis=(0, 0, 1), constraint_axis=(False, False, True), constraint_orientation='GLOBAL', mirror=False, proportional='DISABLED', proportional_edit_falloff='SMOOTH', proportional_size=1)
 			
-			
 			bpy.ops.object.select_all(action='DESELECT')
 			o.select = True
 			context.scene.objects.active = o
@@ -116,14 +111,8 @@ class Create(bpy.types.Operator):
 			bpy.context.object.modifiers["Array"].show_on_cage = True
 
 			bpy.ops.object.select_all(action = "DESELECT")
-			#bpy.context.scene.objects.active = o
-			#o.select = True
-			
-			
-			#context.scene.objects.active = empty
-			#empty.select = True
-			
-			#bpy.ops.object.mode_set(mode = 'EDIT')
+			bpy.context.scene.objects.active = o
+			o.select = True
 			
 		else:
 			print ("Vertex count must be 2")
